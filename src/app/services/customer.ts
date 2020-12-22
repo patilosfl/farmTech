@@ -12,6 +12,3 @@ export interface Customer {
     location?:string;
     district?:string
 }
-
-
-//
