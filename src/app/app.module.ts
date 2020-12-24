@@ -40,6 +40,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 
+import { AgmCoreModule } from '@agm/core';
+
 
 
 @NgModule({
@@ -76,7 +78,10 @@ import { AccountComponent } from './account/account.component';
     InputNumberModule,
     ConfirmDialogModule,
     InputTextareaModule,
-    MenubarModule
+    MenubarModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAFgM81Qz-SwfTzUsr4F51AgDj0HdN88CQ'
+    })
 
   ], 
   bootstrap: [AppComponent],

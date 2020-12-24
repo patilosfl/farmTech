@@ -69,3 +69,18 @@
 	}
 }
  
+
+agm-map {
+	height: 400px;
+  }
+
+  .hide{
+
+	display: none !important;
+
+
+  }
+
+  .show{
+	  display: block !important;
+  }

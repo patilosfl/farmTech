@@ -10,7 +10,7 @@
       "image": false,
       "dob": "13/06/1990",
       "contact": "76-311-6960",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 31.154122,
       "district": "Zengfu"
     },
@@ -24,7 +24,7 @@
       "image": true,
       "dob": "26/08/1987",
       "contact": "46-491-3178",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 28.4233602,
       "district": "Maţāy"
     },
@@ -94,7 +94,7 @@
       "image": false,
       "dob": "26/06/1981",
       "contact": "75-576-2865",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 51.8063451,
       "district": "Zarichne"
     },
@@ -164,7 +164,7 @@
       "image": false,
       "dob": "02/06/1979",
       "contact": "66-508-9830",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 27.8169,
       "district": "Jiantang"
     },
@@ -192,7 +192,7 @@
       "image": false,
       "dob": "28/05/1968",
       "contact": "22-760-7554",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 26.766584,
       "district": "Qidu"
     },
@@ -220,7 +220,7 @@
       "image": true,
       "dob": "30/04/2001",
       "contact": "52-034-2995",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 12.241259,
       "district": "Keffin Hausa"
     },
@@ -248,7 +248,7 @@
       "image": false,
       "dob": "16/01/1975",
       "contact": "14-170-1621",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": -8.5319945,
       "district": "Mambalan"
     },
@@ -262,7 +262,7 @@
       "image": true,
       "dob": "05/03/1968",
       "contact": "58-494-0415",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 32.187849,
       "district": "Zhenjiang"
     },
@@ -290,7 +290,7 @@
       "image": true,
       "dob": "10/02/1971",
       "contact": "36-998-4582",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 38.235892,
       "district": "Raoyang"
     },
@@ -332,7 +332,7 @@
       "image": false,
       "dob": "01/01/1989",
       "contact": "41-271-0803",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": -28.7653754,
       "district": "Butha-Buthe"
     },
@@ -374,7 +374,7 @@
       "image": true,
       "dob": "09/04/1991",
       "contact": "67-774-2756",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 31.613609,
       "district": "Zhouhe"
     },
@@ -388,7 +388,7 @@
       "image": true,
       "dob": "21/12/1993",
       "contact": "17-471-3328",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 14.1148241,
       "district": "Santa Lucía"
     },
@@ -402,7 +402,7 @@
       "image": true,
       "dob": "19/10/2000",
       "contact": "63-562-9441",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": 26.319938,
       "district": "Shuikou"
     },
@@ -416,7 +416,7 @@
       "image": false,
       "dob": "15/12/1973",
       "contact": "67-197-7125",
-      "zipcode": null,
+      "zipcode": 411014,
       "location": -19.7963816,
       "district": "Beira"
     }

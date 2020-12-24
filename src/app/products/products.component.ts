@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit {
 
     ngOnInit() {
         this.productService.getProducts().then( (data: Product[]) => { 
-             data.map(product => { 
+             data.forEach(product => { 
                 product.name = this.productService.generateName();
                 product.category = this.productService.generateCategory();                
             });
