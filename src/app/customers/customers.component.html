@@ -1,27 +1,57 @@
+
+
+    <div [ngClass]="{'show': isModal}" class="modal fade in" id="staticBackdrop" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" style="z-index: 1111111">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Farm location</h5>
+                </div>
+                <div class="modal-body" style="height: 500px;">
+
+                   <img src="../../assets/images/map.PNG" alt="" style="height: 470px; width: 100%;"/>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)="closeMap()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 <p-toast></p-toast>
 
 <div class="card">
     <p-toolbar styleClass="p-mb-4">
         <ng-template pTemplate="left">
-            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
-            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedCustomers()" [disabled]="!selectedCustomers || !selectedCustomers.length"></button>
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"
+                (click)="openNew()"></button>
+            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger"
+                (click)="deleteSelectedCustomers()"
+                [disabled]="!selectedCustomers || !selectedCustomers.length"></button>
         </ng-template>
 
         <ng-template pTemplate="right">
-            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import"
+                class="p-mr-2 p-d-inline-block"></p-fileUpload>
             <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
         </ng-template>
     </p-toolbar>
 
-    <p-table #dt [value]="customers" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
-        [(selection)]="selectedCustomers" [rowHover]="true" dataKey="id"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <p-table #dt [value]="customers" [rows]="10" [paginator]="true"
+        [globalFilterFields]="['name','country.name','representative.name','status']" [(selection)]="selectedCustomers"
+        [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
                 <h5 class="p-m-0">Manage Farmers</h5>
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Search..." />
                 </span>
             </div>
         </ng-template>
@@ -30,13 +60,20 @@
                 <th style="width: 3rem">
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                 </th>
-                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-                <th pSortableColumn="image">Photo <p-sortIcon field="image"></p-sortIcon></th>                
-                <th pSortableColumn="contact">Contact <p-sortIcon field="contact"></p-sortIcon></th>
-                <th pSortableColumn="dob">DOB<p-sortIcon field="dob"></p-sortIcon></th>
-                <th pSortableColumn="relation">Relation <p-sortIcon field="relation"></p-sortIcon></th>
-                <th pSortableColumn="zipcode">Zipcode <p-sortIcon field="zipcode"></p-sortIcon></th>
-                <th pSortableColumn="location">Location <p-sortIcon field="location"></p-sortIcon></th>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="contact">Contact <p-sortIcon field="contact"></p-sortIcon>
+                </th>
+                <th pSortableColumn="dob">DOB<p-sortIcon field="dob"></p-sortIcon>
+                </th>
+                <th pSortableColumn="relation">Relation <p-sortIcon field="relation"></p-sortIcon>
+                </th>
+                <th pSortableColumn="zipcode">Pincode <p-sortIcon field="zipcode"></p-sortIcon>
+                </th>
+                <th pSortableColumn="location">Location <p-sortIcon field="location"></p-sortIcon>
+                </th>
+                <th pSortableColumn="district">District <p-sortIcon field="district"></p-sortIcon>
+                </th>
                 <th>Actions</th>
             </tr>
         </ng-template>
@@ -46,75 +83,127 @@
                     <p-tableCheckbox [value]="customer"></p-tableCheckbox>
                 </td>
                 <td>{{customer.name}}</td>
-                <td><img src="assets/images/user.png" style="width: 40px; height: 40px"/></td>
                 <td>{{customer.contact}}</td>
                 <td>{{customer.dob}}</td>
                 <td>{{customer.relation}} Years</td>
                 <td>{{customer.zipcode}}</td>
-                <td>{{customer.location}}</td>
                 <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editCustomer(customer)"></button>
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteCustomer(customer)"></button>
+                    <span class="btn btn-success"
+                        (click)="setMap(customer.location.latitude,customer.location.longitude)">
+                        <em class="pi pi-globe"></em> Map
+                    </span>
+
+                </td>
+                <td>{{customer.district}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+                        (click)="editCustomer(customer)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                        (click)="deleteCustomer(customer)"></button>
                 </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">
             <div class="p-d-flex p-ai-center p-jc-between">
-                In total there are {{customers ? customers.length : 0 }} customers.
+                In total there are {{customers ? customers.length : 0 }} farmers.
             </div>
         </ng-template>
     </p-table>
 </div>
 
-<p-dialog [(visible)]="customerDialog" [style]="{width: '850px'}" header="Farmer enrollment Details" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="customerDialog" [style]="{width: '850px'}" header="Farmer enrollment Details" [modal]="true"
+    styleClass="p-fluid">
     <ng-template pTemplate="content">
-        <div class="p-field">
-            <label for="name">Name</label>
-            <input type="text" pInputText id="name" [(ngModel)]="customer.name" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !customer.name">Name is required.</small>
-        </div>
-        <div class="p-field">
-            <label for="description">Description</label>
-            <textarea id="description" pInputTextarea [(ngModel)]="customer.address" required rows="3" cols="20"></textarea>
-        </div>
 
-        <div class="p-field">
-            <label class="p-mb-3">Category</label>
-            <div class="p-formgrid p-grid">
-                <div class="p-field-radiobutton p-col-6">
-                    <p-radioButton id="category1" name="category" value="Accessories" [(ngModel)]="customer.name"></p-radioButton>
-                    <label for="category1">Accessories</label>
+        <div class="row container">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">First Name</label>
+                <input type="text" [(ngModel)]="customer.name" class="form-control" id="inputEmail4" placeholder="First Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Last Name</label>
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Last Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Age</label>
+                <input type="number" class="form-control" id="inputAddress" placeholder="Age">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Years in Farming</label>
+                <input type="number"  [(ngModel)]="customer.relation" class="form-control" id="inputAddress" placeholder="Years">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="">Gender</label>
+                <div class="form-check">
+                    <label class="form-check-label"> <input type="radio" name="gender" class="form-check-input"
+                            value="Male">Male </label>
                 </div>
-                <div class="p-field-radiobutton p-col-6">
-                    <p-radioButton id="category2" name="category" value="Clothing" [(ngModel)]="customer.name"></p-radioButton>
-                    <label for="category2">Clothing</label>
-                </div>
-                <div class="p-field-radiobutton p-col-6">
-                    <p-radioButton id="category3" name="category" value="Electronics" [(ngModel)]="customer.name"></p-radioButton>
-                    <label for="category3">Electronics</label>
-                </div>
-                <div class="p-field-radiobutton p-col-6">
-                    <p-radioButton id="category4" name="category" value="Fitness" [(ngModel)]="customer.name"></p-radioButton>
-                    <label for="category4">Fitness</label>
+                <div class="form-check">
+                    <label class="form-check-label"> <input type="radio" name="gender" class="form-check-input"
+                            value="Female">Female </label>
                 </div>
             </div>
-        </div>
+            <div class="form-group col-md-6">
+                <label for="">Handset</label>
+                <div class="form-check">
+                    <label class="form-check-label"> <input type="checkbox" name="phone" class="form-check-input"
+                            value="Feature Phone">Feature Phone </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label"> <input type="checkbox" name="phone" class="form-check-input"
+                            value="Smart Phone">Smart Phone </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Personal Phone No</label>
+                <input type="text"  [(ngModel)]="customer.contact" class="form-control" id="inputAddress" placeholder="Phone No">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Other Mobile No</label>
+                <input type="number" class="form-control" id="inputAddress" placeholder="Mobile No">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress"><Address></Address></label>
+                <textarea type="number" [(ngModel)]="customer.district"  class="form-control" id="inputAddress" placeholder="Address">
+                    
+                </textarea>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Pincode</label>
+                <input type="text" [(ngModel)]="customer.zipcode"  class="form-control" id="inputAddress" placeholder="Pincode">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="">Land Size(Cultivation)</label>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Hecter</label>
+                    <input type="number" class="form-control" id="inputAddress" placeholder="Hecter">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Acre</label>
+                    <input type="number" class="form-control" id="inputAddress" placeholder="Acre">
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="">Land Size(Own)</label>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Hecter</label>
+                    <input type="number" class="form-control" id="inputAddress" placeholder="Hecter">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputAddress">Acre</label>
+                    <input type="number" class="form-control" id="inputAddress" placeholder="Acre">
+                </div>
+            </div>
+        </div>     
 
-        <div class="p-formgrid p-grid">
-            <div class="p-field p-col">
-                <label for="price">Price</label>
-                <p-inputNumber id="price" [(ngModel)]="customer.age" mode="currency" currency="USD" locale="en-US"></p-inputNumber>
-            </div>
-            <div class="p-field p-col">
-                <label for="quantity">Quantity</label>
-                <p-inputNumber id="quantity" [(ngModel)]="customer.age"></p-inputNumber>
-            </div>
-        </div>
+        
+
+        
     </ng-template>
-    
+
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveCustomer()"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text p-button-danger" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text p-button-success" (click)="saveCustomer()"></button>
     </ng-template>
 </p-dialog>
 

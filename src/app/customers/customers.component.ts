@@ -4,6 +4,7 @@ import { CustomerService } from '../services/customer.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 
+
 @Component({
     selector: 'app-customers',
     templateUrl: './customers.component.html',
@@ -17,6 +18,10 @@ import { MessageService } from 'primeng/api';
 `],
 })
 export class CustomersComponent implements OnInit {
+
+    lat = 17.597683;
+    lng = 74.087048;
+    isModal = false;
 
 
     customerDialog: boolean;
@@ -32,10 +37,33 @@ export class CustomersComponent implements OnInit {
     constructor(private customerService: CustomerService, private messageService: MessageService, private confirmationService: ConfirmationService) { }
 
     ngOnInit() {
-        this.customerService.getCustomers().then(data => {
+        this.customerService.getCustomers().then((data: Customer[]) => {
+            data.forEach(customer => {
+                customer.name = this.customerService.generateNames();
+                customer.district = this.customerService.generateDistricts();
+                customer.contact = this.customerService.generatePhones();
+                customer.location = this.customerService.generateMaps();
+            });
             this.customers = data;
-        });       
+        });
     }
+
+    setMap(lat,long) {       
+
+        // this.lat = lat;
+        // this.lng = long;
+        this.isModal = true;
+    }
+
+    closeMap(){
+
+        this.isModal = false;
+
+
+    }
+
+
+
 
     openNew() {
         this.customer = {};
