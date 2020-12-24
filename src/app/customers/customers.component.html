@@ -1,17 +1,15 @@
-<div class="modal-open">
+
 
     <div [ngClass]="{'show': isModal}" class="modal fade in" id="staticBackdrop" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel" aria-hidden="true" style="z-index: 1111111">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Farm location</h5>
                 </div>
-                <div class="modal-body" style="height: 400px;">
+                <div class="modal-body" style="height: 500px;">
 
-                    <agm-map [latitude]="lat" [longitude]="lng">
-                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                    </agm-map>
+                   <img src="../../assets/images/map.PNG" alt="" style="height: 470px; width: 100%;"/>
 
                 </div>
                 <div class="modal-footer">
@@ -21,7 +19,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 
 <p-toast></p-toast>
